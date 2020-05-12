@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Very Simple Twitter Clone</title>
+
+    <!-- Skeleton CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>Very Simple Twitter Clone</h1>
+    <form class="message-form">
+      <label for="name">Your Name</label>
+      <input id="name" class="u-full-width" type="text" autocomplete="off" />
+      <label for="message">Message</label>
+      <textarea
+        class="u-full-width"
+        placeholder="Post a fake tweet ..."
+        id="message"
+      ></textarea>
+      <button type="submit">Post Message</button>
+    </form>
+    <div class="loader"></div>
+
+    <script src="index.js"></script>
+  </body>
+</html>
