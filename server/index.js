@@ -2,6 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const moment = require('moment');
 const dotenv = require('dotenv').config();
 
 mongoose.connect(
@@ -30,6 +31,21 @@ app.get('/', (req, res) => {
   res.json({ message: 'Hello! :)' });
 });
 
+app.get('/tweets', (req, res) => {
+  Post.find()
+    .exec()
+    .then((docs) => {
+      const response = docs.map((doc) => {
+        return {
+          name: doc.name,
+          message: doc.message,
+          createdAt: moment(doc.createdAt).fromNow(),
+        };
+      });
+      res.status(200).json(response);
+    });
+});
+
 function isValid(tweet) {
   return (
     tweet.name &&
@@ -45,15 +61,21 @@ app.post('/tweets', (req, res) => {
 
     const post = new Post({
       _id: new mongoose.Types.ObjectId(),
-      name: req.body.name,
-      message: req.body.message,
+      name: req.body.name.toString(),
+      message: req.body.message.toString(),
       createdAt: new Date().toISOString(),
     });
 
     post
       .save()
       .then((result) => {
-        res.status(200).json({ message: 'Post added successfully!' });
+        console.log(result.name);
+        res.status(200).json({
+          message: 'Post added successfully!',
+          tweet: {
+            post,
+          },
+        });
       })
       .catch((err) => {
         res.status(500).json({ error: err });
