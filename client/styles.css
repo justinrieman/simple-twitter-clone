@@ -24,7 +24,6 @@ textarea {
   -webkit-animation: spin 2s linear infinite;
   animation: spin 2s linear infinite;
   margin: auto;
-  display: none;
 }
 
 @-webkit-keyframes spin {
@@ -43,4 +42,40 @@ textarea {
   100% {
     transform: rotate(360deg);
   }
+}
+
+.tweet-container {
+  border: 1px solid black;
+  width: 50%;
+  margin: 3rem auto 0;
+  text-align: left;
+  border-radius: 5px;
+}
+
+.tweet-container p {
+  padding: 0.5rem;
+}
+
+.tweet-header {
+  background-color: slategrey;
+}
+
+.tweet-name {
+  margin: 0 0 0 1.5rem;
+  font-weight: 600;
+  display: inline-block;
+  color: #f3f3f3;
+  font-size: 2rem;
+  letter-spacing: 0.2rem;
+}
+
+.tweet-time {
+  font-size: 1.3rem;
+  margin: 0 0.2rem 0;
+  display: inline-block;
+  color: #ffffff;
+}
+
+.tweet-message {
+  margin: 1rem 1.5rem 1rem;
 }
